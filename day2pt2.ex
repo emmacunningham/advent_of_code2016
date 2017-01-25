@@ -1,3 +1,7 @@
+# TODO: consider how we might generalize this for all keypad inputs
+# We could use the whitespaces to determine key layout
+# and possibly generate the moves based on the number of whitespaces between keys?
+
 defmodule Advent.Day2 do
   @input "day2.txt"
   @keypad_input "day2keypad.txt"
