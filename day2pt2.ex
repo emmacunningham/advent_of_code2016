@@ -20,13 +20,6 @@ defmodule Advent.Day2 do
   #   9 10 11
   #     12
 
-
-  def get_keypad() do
-    File.read!(@keypad_input)
-    |> String.graphemes()
-    |> Enum.filter(fn(grapheme) -> String.match?(grapheme, ~r/[A-D1-9]/) end)
-  end
-
   def get_key_index(loc) do
     keypad_list = @keypad
     Enum.find_index(keypad_list, fn(n) -> n == loc end)
