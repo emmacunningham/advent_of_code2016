@@ -6,14 +6,9 @@ defmodule Advent.Day3 do
     |> String.split("\n")
     |> Enum.map(fn(row) ->
          String.trim(row)
-         |> String.split(" ")
+         |> String.split()
          |> Enum.reduce({}, fn(cell, acc) ->
-              case cell == "" do
-                true ->
-                  acc
-                false ->
-                  Tuple.append(acc, String.to_integer(cell))
-              end
+              Tuple.append(acc, String.to_integer(cell))
             end)
        end)
   end
