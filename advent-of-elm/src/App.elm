@@ -25,6 +25,9 @@ challenges =
     , { name = "Project Euler 2: "
       , solution = toString (computeFiboSum 4000000 1 2 0)
       }
+    , { name = "Interview Cake Product of all Others: "
+      , solution = toString (productOfOthers [ 1, 7, 3, 4 ])
+      }
     ]
 
 
@@ -125,6 +128,26 @@ computeFiboSum upperBound f1 f2 sum =
             nextSum
         else
             computeFiboSum upperBound f2 (f1 + f2) nextSum
+
+
+getProductExcept : List Int -> Int -> Int -> Int
+getProductExcept list idx num =
+    let
+        reverseTakeIdx =
+            (List.length list) - idx - 1
+
+        preOthers =
+            List.take idx list
+
+        postOthers =
+            List.take reverseTakeIdx (List.reverse list)
+    in
+        (List.product preOthers) * (List.product postOthers)
+
+
+productOfOthers : List Int -> List Int
+productOfOthers list =
+    List.indexedMap (getProductExcept list) list
 
 
 view : Model -> Html Msg
